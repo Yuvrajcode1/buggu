@@ -51,14 +51,14 @@ export default function CakeCeremony() {
   }
 
   return (
-    <section id="cake" className="relative min-h-screen overflow-hidden bg-gradient-to-b from-midnight via-wine to-plum px-6 py-28">
+    <section id="cake" className="relative min-h-screen overflow-hidden bg-gradient-to-b from-midnight via-wine to-plum px-4 sm:px-6 py-20 sm:py-28">
       <Particles count={50} />
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.4em] text-gold">The Main Event</p>
-        <h2 className="section-heading text-glow mt-3 text-3xl text-cream md:text-5xl">
+        <h2 className="section-heading text-glow mt-3 text-2xl sm:text-3xl text-cream md:text-5xl">
           Make A Wish, {NICK_NAME}
         </h2>
-        <p className="mt-4 text-cream/60">
+        <p className="mt-4 text-sm sm:text-base text-cream/60 px-2">
           {!allBlown
             ? 'Blow out each candle by clicking on it.'
             : !cut
@@ -67,10 +67,10 @@ export default function CakeCeremony() {
         </p>
       </div>
 
-      <div className="relative z-10 mt-16 flex justify-center">
-        <div className="relative" style={{ width: 320, height: 340 }}>
+      <div className="relative z-10 mt-12 sm:mt-16 flex justify-center px-2">
+        <div className="relative w-full max-w-[280px] sm:max-w-[320px]">
           {/* Candles */}
-          <div className="absolute left-1/2 top-0 flex -translate-x-1/2 gap-4">
+          <div className="flex justify-center gap-2 sm:gap-4 mb-1">
             {litCandles.map((lit, i) => (
               <button
                 key={i}
@@ -84,7 +84,7 @@ export default function CakeCeremony() {
                       initial={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -14, scale: 1.6 }}
                       transition={{ duration: 0.5 }}
-                      className="mb-[-2px] h-4 w-3 rounded-full bg-gradient-to-t from-orange-400 via-yellow-300 to-yellow-100 shadow-[0_0_14px_rgba(253,224,71,0.9)]"
+                      className="mb-[-2px] h-3 w-2.5 sm:h-4 sm:w-3 rounded-full bg-gradient-to-t from-orange-400 via-yellow-300 to-yellow-100 shadow-[0_0_14px_rgba(253,224,71,0.9)]"
                       style={{ transformOrigin: 'bottom center' }}
                     />
                   )}
@@ -94,32 +94,30 @@ export default function CakeCeremony() {
                     initial={{ opacity: 0.8, y: 0 }}
                     animate={{ opacity: 0, y: -30 }}
                     transition={{ duration: 1.6 }}
-                    className="absolute -top-1 h-6 w-4 rounded-full bg-cream/30 blur-[3px]"
+                    className="absolute -top-1 h-5 w-3 sm:h-6 sm:w-4 rounded-full bg-cream/30 blur-[3px]"
                   />
                 )}
-                <div className="h-10 w-2 rounded-sm bg-gradient-to-b from-rosegold to-blush" />
+                <div className="h-8 w-1.5 sm:h-10 sm:w-2 rounded-sm bg-gradient-to-b from-rosegold to-blush" />
               </button>
             ))}
           </div>
 
           {/* Cake */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2" style={{ width: 300 }}>
-            <div className="relative flex justify-center" style={{ height: 200 }}>
+          <div className="relative mx-auto w-full">
+            <div className="relative flex justify-center" style={{ height: 'clamp(150px, 42vw, 200px)' }}>
               {/* Left half */}
               <motion.div
-                animate={cut ? { x: -46, rotate: -3 } : { x: 0, rotate: 0 }}
+                animate={cut ? { x: -36, rotate: -3 } : { x: 0, rotate: 0 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
-                className="relative"
-                style={{ width: 150, height: 200 }}
+                className="relative w-1/2"
               >
                 <CakeHalf side="left" />
               </motion.div>
               {/* Right half */}
               <motion.div
-                animate={cut ? { x: 46, rotate: 3 } : { x: 0, rotate: 0 }}
+                animate={cut ? { x: 36, rotate: 3 } : { x: 0, rotate: 0 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
-                className="relative"
-                style={{ width: 150, height: 200 }}
+                className="relative w-1/2"
               >
                 <CakeHalf side="right" />
               </motion.div>
@@ -127,14 +125,10 @@ export default function CakeCeremony() {
               {/* Knife */}
               {allBlown && !cut && (
                 <motion.div
-                  initial={{ y: -120, opacity: 0 }}
-                  animate={
-                    cutting
-                      ? { y: [-40, 60], opacity: 1 }
-                      : { y: -40, opacity: 1 }
-                  }
+                  initial={{ y: -100, opacity: 0 }}
+                  animate={cutting ? { y: [-30, 50], opacity: 1 } : { y: -30, opacity: 1 }}
                   transition={cutting ? { duration: 1.2, ease: 'easeIn' } : { duration: 0.8 }}
-                  className="absolute left-1/2 top-0 -translate-x-1/2"
+                  className="absolute left-1/2 top-0 -translate-x-1/2 scale-75 sm:scale-100"
                   style={{ zIndex: 20 }}
                 >
                   <Knife />
@@ -145,19 +139,19 @@ export default function CakeCeremony() {
               {allBlown && !cut && (
                 <>
                   <motion.div
-                    initial={{ x: -70, y: -10, opacity: 0 }}
-                    animate={{ x: -34, y: -18, opacity: 1 }}
+                    initial={{ x: -55, y: -8, opacity: 0 }}
+                    animate={{ x: -26, y: -14, opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.7 }}
-                    className="absolute left-1/2 top-0 -translate-x-1/2 text-4xl"
+                    className="absolute left-1/2 top-0 -translate-x-1/2 text-2xl sm:text-4xl"
                     style={{ zIndex: 21 }}
                   >
                     🤚
                   </motion.div>
                   <motion.div
-                    initial={{ x: 70, y: -10, opacity: 0, scaleX: -1 }}
-                    animate={{ x: 22, y: -18, opacity: 1, scaleX: -1 }}
+                    initial={{ x: 55, y: -8, opacity: 0, scaleX: -1 }}
+                    animate={{ x: 16, y: -14, opacity: 1, scaleX: -1 }}
                     transition={{ delay: 0.4, duration: 0.7 }}
-                    className="absolute left-1/2 top-0 -translate-x-1/2 text-4xl"
+                    className="absolute left-1/2 top-0 -translate-x-1/2 text-2xl sm:text-4xl"
                     style={{ zIndex: 21 }}
                   >
                     🤚
@@ -165,12 +159,12 @@ export default function CakeCeremony() {
                 </>
               )}
             </div>
-            <div className="mx-auto h-6 w-[280px] rounded-full bg-black/40 blur-md" />
+            <div className="mx-auto h-4 sm:h-6 w-[85%] max-w-[280px] rounded-full bg-black/40 blur-md" />
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mt-10 flex justify-center">
+      <div className="relative z-10 mt-8 sm:mt-10 flex justify-center px-4">
         {allBlown && !cut && (
           <motion.button
             initial={{ opacity: 0, y: 10 }}
@@ -178,7 +172,7 @@ export default function CakeCeremony() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={cutCake}
-            className="rounded-full bg-gradient-to-r from-gold to-rosegold px-8 py-3 font-medium text-midnight shadow-glow"
+            className="rounded-full bg-gradient-to-r from-gold to-rosegold px-6 sm:px-8 py-3 text-sm sm:text-base font-medium text-midnight shadow-glow"
           >
             Cut The Cake Together 🔪
           </motion.button>
@@ -191,7 +185,7 @@ export default function CakeCeremony() {
 function CakeHalf({ side }) {
   const isLeft = side === 'left'
   return (
-    <svg viewBox="0 0 150 200" width="150" height="200">
+    <svg viewBox="0 0 150 200" className="w-full h-auto">
       <defs>
         <linearGradient id={`frost-${side}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#fdf6ec" />
@@ -202,13 +196,10 @@ function CakeHalf({ side }) {
           <stop offset="100%" stopColor="#c9822f" />
         </linearGradient>
       </defs>
-      {/* base tier */}
       <rect x="5" y="120" width="140" height="70" rx="6" fill={`url(#sponge-${side})`} />
       <rect x="5" y="120" width="140" height="16" fill={`url(#frost-${side})`} />
-      {/* top tier */}
       <rect x="25" y="60" width="100" height="65" rx="6" fill={`url(#sponge-${side})`} />
       <rect x="25" y="60" width="100" height="14" fill={`url(#frost-${side})`} />
-      {/* drips */}
       <path
         d={
           isLeft
@@ -220,7 +211,6 @@ function CakeHalf({ side }) {
         strokeLinecap="round"
         fill="none"
       />
-      {/* cream swirl */}
       <circle cx={isLeft ? 110 : 40} cy="60" r="9" fill="#fdf6ec" />
       <circle cx={isLeft ? 110 : 40} cy="60" r="4" fill="#f3c47a" />
     </svg>
@@ -229,7 +219,7 @@ function CakeHalf({ side }) {
 
 function Knife() {
   return (
-    <svg viewBox="0 0 40 140" width="34" height="120">
+    <svg viewBox="0 0 40 140" width="30" height="105">
       <defs>
         <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#f4f4f4" />
