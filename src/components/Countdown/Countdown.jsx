@@ -72,23 +72,23 @@ export default function Countdown({ onUnlocked }) {
   }
 
   return (
-    <section className="relative flex min-h-[60vh] flex-col items-center justify-center bg-plum px-6 py-20 text-center">
+    <section className="relative flex min-h-[60vh] flex-col items-center justify-center bg-plum px-4 py-16 text-center sm:px-6 sm:py-20">
       <Particles count={50} />
-      <p className="mb-3 text-xs uppercase tracking-[0.4em] text-gold">Counting Down To</p>
-      <h2 className="section-heading text-3xl text-cream md:text-4xl">
+      <p className="mb-3 text-[10px] uppercase tracking-[0.4em] text-gold sm:text-xs">Counting Down To</p>
+      <h2 className="section-heading text-2xl text-cream sm:text-3xl md:text-4xl">
         {NICK_NAME}'s Birthday
       </h2>
-      <div className="mt-10 flex gap-4 md:gap-8">
+      <div className="mt-8 flex flex-wrap justify-center gap-3 sm:mt-10 sm:gap-4 md:gap-8">
         {UNITS.map((u) => (
           <div
             key={u.key}
-            className="glass flex w-16 flex-col items-center rounded-2xl py-4 md:w-24 md:py-6 shadow-premium"
+            className="glass flex w-16 flex-col items-center rounded-2xl py-3 shadow-premium sm:w-20 sm:py-4 md:w-24 md:py-6"
           >
             <motion.span
               key={timeLeft[u.key]}
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-display text-2xl text-gold md:text-4xl"
+              className="font-display text-xl text-gold sm:text-2xl md:text-4xl"
             >
               {String(timeLeft[u.key]).padStart(2, '0')}
             </motion.span>
@@ -98,7 +98,7 @@ export default function Countdown({ onUnlocked }) {
           </div>
         ))}
       </div>
-      <p className="mt-8 max-w-md text-sm text-cream/50">
+      <p className="mt-8 max-w-md px-2 text-sm text-cream/50 sm:text-base">
         The rest of the celebration unlocks the moment the clock hits zero.
       </p>
     </section>

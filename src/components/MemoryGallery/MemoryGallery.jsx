@@ -43,7 +43,7 @@ export default function MemoryGallery() {
   const [active, setActive] = useState(null)
 
   return (
-    <section id="gallery" className="relative bg-plum px-6 py-28">
+    <section id="gallery" className="relative bg-plum px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.4em] text-gold">Captured Moments</p>
         <h2 className="section-heading text-glow mt-3 text-3xl text-cream md:text-5xl">
@@ -52,7 +52,7 @@ export default function MemoryGallery() {
         
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 place-items-center">
+      <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-5 place-items-center sm:mt-16 sm:grid-cols-2 sm:gap-6 md:grid-cols-3">
         {GALLERY_IMAGES.map((img, i) => (
           <Polaroid key={img.src} img={img} index={i} onOpen={setActive} />
         ))}
@@ -80,7 +80,7 @@ export default function MemoryGallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass max-w-lg rounded-2xl p-4 shadow-premium"
+              className="glass w-full max-w-lg rounded-2xl p-4 shadow-premium"
             >
               <img
                 src={GALLERY_IMAGES[active].src}

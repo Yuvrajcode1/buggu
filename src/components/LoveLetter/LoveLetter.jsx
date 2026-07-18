@@ -20,7 +20,7 @@ export default function LoveLetter() {
   }, [inView])
 
   return (
-    <section id="letter" className="relative bg-midnight px-6 py-28">
+    <section id="letter" className="relative bg-midnight px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.4em] text-gold">From Me To You</p>
         <h2 className="section-heading text-glow mt-3 text-3xl text-cream md:text-5xl">
@@ -34,14 +34,14 @@ export default function LoveLetter() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className="mx-auto mt-14 max-w-xl rounded-sm px-8 py-12 shadow-premium md:px-12"
+        className="mx-auto mt-12 w-full max-w-xl rounded-sm px-5 py-8 shadow-premium sm:mt-14 sm:px-8 sm:py-12 md:px-12"
         style={{
           background: 'linear-gradient(180deg, #fdf6ec 0%, #f6ecda 100%)',
           backgroundImage:
             'repeating-linear-gradient(180deg, transparent, transparent 33px, rgba(74,16,48,0.08) 34px)',
         }}
       >
-        <pre className="whitespace-pre-wrap font-script text-xl leading-[34px] text-wine md:text-2xl">
+        <pre className="whitespace-pre-wrap font-script text-lg leading-8 text-wine sm:text-xl sm:leading-[34px] md:text-2xl">
           {typed}
           <motion.span
             animate={{ opacity: [1, 0] }}

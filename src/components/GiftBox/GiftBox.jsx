@@ -22,14 +22,14 @@ export default function GiftBox() {
   }
 
   return (
-    <section id="gift" className="relative flex min-h-[90vh] flex-col items-center justify-center bg-gradient-to-b from-plum to-midnight px-6 py-24 text-center">
+    <section id="gift" className="relative flex min-h-[90vh] flex-col items-center justify-center bg-gradient-to-b from-plum to-midnight px-4 py-20 text-center sm:px-6 sm:py-24">
       <p className="text-xs uppercase tracking-[0.4em] text-gold">One More Thing</p>
-      <h2 className="section-heading text-glow mt-3 text-3xl text-cream md:text-5xl">
+      <h2 className="section-heading text-glow mt-3 text-2xl text-cream sm:text-3xl md:text-5xl">
         A Little Gift For You
       </h2>
       <p className="mt-4 text-cream/60">Go ahead — open it.</p>
 
-      <div className="relative mt-16 flex h-56 w-56 items-center justify-center">
+      <div className="relative mt-10 flex h-44 w-44 items-center justify-center sm:mt-16 sm:h-56 sm:w-56">
         {/* golden sparkle burst */}
         <AnimatePresence>
           {opened &&
@@ -79,7 +79,7 @@ export default function GiftBox() {
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
                   animate={{ opacity: 1, y: -110, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.9, ease: 'easeOut' }}
-                  className="glass absolute left-1/2 top-8 w-64 -translate-x-1/2 rounded-xl px-5 py-4 shadow-glow"
+                  className="glass absolute left-1/2 top-8 w-[88%] max-w-[16rem] -translate-x-1/2 rounded-xl px-4 py-4 shadow-glow sm:w-64 sm:px-5"
                 >
                   <p className="font-script text-xl text-gold">
                     I Have One More Surprise ❤️

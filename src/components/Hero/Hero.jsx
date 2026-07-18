@@ -22,7 +22,7 @@ export default function Hero({ onEnter }) {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-celebration-gradient px-6 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-celebration-gradient px-4 py-6 text-center sm:px-6"
     >
       <Particles count={100} />
       <FloatingHearts count={16} />
@@ -36,7 +36,7 @@ export default function Hero({ onEnter }) {
         For {HER_NAME}
       </motion.p>
 
-      <h1 className="section-heading text-glow max-w-4xl text-4xl font-semibold text-cream sm:text-6xl md:text-7xl">
+      <h1 className="section-heading text-glow max-w-4xl text-3xl font-semibold leading-tight text-cream sm:text-5xl md:text-7xl">
         {typed}
         <motion.span
           animate={{ opacity: [1, 0] }}
@@ -50,7 +50,7 @@ export default function Hero({ onEnter }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.6, duration: 1.2 }}
-        className="mt-6 font-script text-2xl text-blush md:text-3xl"
+        className="mt-6 px-2 font-script text-xl text-blush sm:text-2xl md:text-3xl"
       >
         Today is all about you.
       </motion.p>
@@ -62,7 +62,7 @@ export default function Hero({ onEnter }) {
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.96 }}
         onClick={onEnter}
-        className="group mt-12 flex items-center gap-3 rounded-full bg-gradient-to-r from-gold to-rosegold px-8 py-4 font-medium text-midnight shadow-glow"
+        className="group mt-10 flex w-full max-w-[280px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-gold to-rosegold px-6 py-3.5 text-sm font-medium text-midnight shadow-glow sm:mt-12 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
       >
         <FaPlay className="text-sm" />
         Begin the Celebration
@@ -72,7 +72,7 @@ export default function Hero({ onEnter }) {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 text-xs tracking-[0.3em] text-cream/40"
+        className="absolute bottom-6 text-[10px] tracking-[0.3em] text-cream/40 sm:bottom-8 sm:text-xs"
       >
         SCROLL TO CONTINUE ↓
       </motion.div>

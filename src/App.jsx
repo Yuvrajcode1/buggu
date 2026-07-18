@@ -27,17 +27,17 @@ export default function App() {
 
   if (!unlocked) {
     return (
-      <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-celebration-gradient px-6 text-center">
+      <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-celebration-gradient px-4 py-6 text-center sm:px-6">
         <Particles count={60} />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="glass relative z-10 w-full max-w-sm rounded-3xl px-8 py-12 shadow-premium"
+          className="glass relative z-10 w-full max-w-sm rounded-3xl px-5 py-10 shadow-premium sm:px-8 sm:py-12"
         >
           <FaLock className="mx-auto mb-4 text-3xl text-gold" />
-          <h1 className="section-heading text-2xl text-cream">A Little Secret</h1>
-          <h1 className="section-heading text-2xl text-red-500">BABU DHANIYA</h1>
+          <h1 className="section-heading text-xl text-cream sm:text-2xl">A Little Secret</h1>
+          <h1 className="section-heading text-xl text-red-500 sm:text-2xl">BABU DHANIYA</h1>
           <p className="mt-2 text-sm text-cream/60">Enter the password to open your surprise</p>
 
           <form onSubmit={submit} className="mt-8">
