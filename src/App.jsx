@@ -1,18 +1,52 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaHeart, FaLock } from 'react-icons/fa'
 import Loader from './components/Loader/Loader'
 import CursorGlow from './components/CursorEffects/CursorGlow'
 import Particles from './components/Particles/Particles'
 import Home from './pages/Home'
+import { BIRTHDAY_DAY, BIRTHDAY_MONTH, NICK_NAME } from './utils/constants'
 
 const CORRECT_PASSWORD = 'Hamsafar'
+
+function getNextBirthday() {
+  const now = new Date()
+  let year = now.getFullYear()
+  let target = new Date(year, BIRTHDAY_MONTH - 1, BIRTHDAY_DAY, 0, 0, 0)
+  if (target < now) {
+    target = new Date(year + 1, BIRTHDAY_MONTH - 1, BIRTHDAY_DAY, 0, 0, 0)
+  }
+  return target
+}
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(false)
   const [loading, setLoading] = useState(true)
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const target = getNextBirthday()
+    const tick = () => {
+      const now = new Date()
+      const diff = target - now
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+        return
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      })
+    }
+
+    tick()
+    const interval = setInterval(tick, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   const submit = (e) => {
     e.preventDefault()
@@ -69,6 +103,29 @@ export default function App() {
               Unlock <FaHeart className="text-sm" />
             </motion.button>
           </form>
+
+          <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 px-3 py-3 sm:px-4">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-gold/80">
+              Countdown to {NICK_NAME}'s Day
+            </p>
+            <div className="mt-3 grid grid-cols-4 gap-2">
+              {[
+                { key: 'days', label: 'Days' },
+                { key: 'hours', label: 'Hours' },
+                { key: 'minutes', label: 'Min' },
+                { key: 'seconds', label: 'Sec' },
+              ].map((unit) => (
+                <div key={unit.key} className="rounded-xl bg-white/10 px-2 py-2">
+                  <p className="font-display text-lg text-gold">
+                    {String(timeLeft[unit.key]).padStart(2, '0')}
+                  </p>
+                  <p className="text-[9px] uppercase tracking-[0.2em] text-cream/60">
+                    {unit.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     )
