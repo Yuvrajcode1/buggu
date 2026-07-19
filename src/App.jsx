@@ -7,7 +7,7 @@ import Particles from './components/Particles/Particles'
 import Home from './pages/Home'
 import { BIRTHDAY_DAY, BIRTHDAY_MONTH, NICK_NAME } from './utils/constants'
 
-const CORRECT_PASSWORD = 'Hamsafar'
+const CORRECT_PASSWORD = 'buggu'
 
 function getNextBirthday() {
   const now = new Date()
